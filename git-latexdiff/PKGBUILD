@@ -2,7 +2,7 @@
 # Maintainer: Benjamin Chrétien <chretien at lirmm dot fr>
 pkgname=git-latexdiff
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple but very convenient wrapper around Git and latexdiff"
 arch=('any')
 url="https://gitlab.com/git-latexdiff/git-latexdiff"
