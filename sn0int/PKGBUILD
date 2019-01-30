@@ -1,0 +1,45 @@
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Maintainer: Santiago Torres-Arias <santiago[at]archlinux[dot]org>
+# Contributor: kpcyrd <git@rxv.cc>
+
+pkgname=sn0int
+pkgver=0.9.0
+pkgrel=1
+pkgdesc='Semi-automatic OSINT framework and package manager'
+url='https://github.com/kpcyrd/sn0int'
+arch=('x86_64')
+license=('GPL3')
+depends=('libcap' 'sqlite' 'libseccomp' 'geoip2-database' 'publicsuffix-list')
+makedepends=('cargo' 'python-sphinx')
+install=sn0int.install
+source=(https://github.com/kpcyrd/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
+sha512sums=('79c341cfb65f4e016e4fcf57efa00f2838511226c674d1281aed71b9ce00111a9881a2b5c065ae142afeb312a819ce84ab75947152c6741c5626f0754a6362a6')
+
+build() {
+  cd ${pkgname}-${pkgver}
+  cargo build --release --locked
+  make -C docs man
+}
+
+check() {
+  cd ${pkgname}-${pkgver}
+  cargo test --release --locked
+}
+
+package() {
+  cd ${pkgname}-${pkgver}
+  install -Dm 755 target/release/${pkgname} "${pkgdir}/usr/bin/${pkgname}"
+
+  install -d "${pkgdir}/usr/share/bash-completion/completions" \
+             "${pkgdir}/usr/share/zsh/site-functions" \
+             "${pkgdir}/usr/share/fish/vendor_completions.d"
+  "${pkgdir}/usr/bin/sn0int" completions bash > "${pkgdir}/usr/share/bash-completion/completions/sn0int"
+  "${pkgdir}/usr/bin/sn0int" completions zsh > "${pkgdir}/usr/share/zsh/site-functions/_sn0int"
+  "${pkgdir}/usr/bin/sn0int" completions fish > "${pkgdir}/usr/share/fish/vendor_completions.d/sn0int.fish"
+
+  install -Dm 644 docs/_build/man/sn0int.1 -t "${pkgdir}/usr/share/man/man1"
+  install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+}
+
+# vim: ts=2 sw=2 et:
