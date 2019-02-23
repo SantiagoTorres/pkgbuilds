@@ -8,8 +8,8 @@ pkgver=10.0
 pkgrel=0
 pkgdesc='IDE for Java, HTML5, PHP, Groovy, C and C++'
 arch=('any')
-url='http://netbeans.apache.org/'
-license=('Apache2')
+url='https://netbeans.apache.org/'
+license=('Apache')
 # classpath is not needed, see FS#38567 (Oracle JDK does not need atk either)
 depends=('ttf-font')
 makedepends=('ant' 'java-environment=8')
