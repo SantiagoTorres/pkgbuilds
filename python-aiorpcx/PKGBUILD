@@ -2,8 +2,8 @@
 # Contributor: smmalis37
 
 pkgname='python-aiorpcx'
-pkgver=0.10.5
-pkgrel=2
+pkgver=0.15.0
+pkgrel=1
 pkgdesc="A generic asyncio library implementation of RPC suitable for an application that is a client, server or both."
 url="https://github.com/kyuupichan/aiorpcX/"
 arch=('any')
@@ -11,7 +11,8 @@ license=('MIT')
 depends=('python>=3.6' 'python-attrs')
 makedepends=('python-setuptools')
 source=("https://github.com/kyuupichan/aiorpcX/archive/${pkgver}.tar.gz")
-sha256sums=('53c2ee8453c754587ef19e7e6b431a783428d10aa9c18ca0a753ebb82f2361ff')
+sha256sums=('2c409a6053c083067f3f5c6923eebe290b0ced034f39eeb1244677697d6600a4')
+
 
 build() {
   cd "${srcdir}/aiorpcX-${pkgver}"
@@ -23,4 +24,3 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
   install -D -m644 LICENCE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
