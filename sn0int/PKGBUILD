@@ -12,8 +12,8 @@ license=('GPL3')
 depends=('libcap' 'sqlite' 'libseccomp' 'geoip2-database' 'publicsuffix-list')
 makedepends=('cargo' 'python-sphinx')
 install=sn0int.install
-source=(v${pkgver}.tar.gz::https://github.com/kpcyrd/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz
-        https://github.com/kpcyrd/${pkgname}/releases/download/v${pkgver}/v${pkgver}.tar.gz.asc)
+source=(https://github.com/kpcyrd/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz
+        ${pkgname}-${pkgver}.tar.gz.asc::https://github.com/kpcyrd/${pkgname}/releases/download/v${pkgver}/v${pkgver}.tar.gz.asc)
 sha512sums=('2a86ebbfaf6b87e552ca1b44ea621adc0402ccf1992725e8d406b86560b8ae7032b6cc892d60e33dc815947407a696781cf3d97e9479986c9d41b5b627bdb05a' 'SKIP')
 validpgpkeys=("64B13F7117D6E07D661BBCE0FE763A64F5E54FD6")
 
