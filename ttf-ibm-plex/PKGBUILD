@@ -6,7 +6,7 @@
 
 pkgname=ttf-ibm-plex
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="IBM Plex Mono, Sans, and Serif"
 arch=('any')
 url='https://github.com/IBM/plex'
